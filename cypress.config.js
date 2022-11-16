@@ -6,7 +6,13 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: 'http://localhost:3000/',
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "reportDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
     
      },
+    }
 });
-

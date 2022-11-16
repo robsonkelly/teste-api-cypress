@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import contrato from '../contracts/produtos.contract'
 
 const id = require("faker/lib/locales/id_ID");
 
@@ -7,6 +8,14 @@ describe('Teste de Funcionalidade Produtos', () => {
     before(() =>{
         cy.token('fulano@qa.com', 'teste').then (tkn => { token = tkn})
 
+    });
+
+    it('Deve validade contrato de produtos', () => {
+        cy.request ('produtos').then (response => {
+            return contrato.validateAsync(response.body)
+
+        })
+        
     });
     
     it('Listar produtos', () => {
